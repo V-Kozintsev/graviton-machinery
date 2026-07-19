@@ -1,6 +1,6 @@
 # GRAVITON - строительная техника
 
-Демонстрационный B2B-каталог строительной техники на React, TypeScript, Vite и Tailwind CSS. Компания GRAVITON является вымышленной, изображения техники подготовлены как единый демонстрационный фотосет без реальных брендов.
+B2B-каталог строительной техники на React, TypeScript, Vite и Tailwind CSS. Сайт включает каталог машин, детальные карточки, фильтры, заявку на коммерческое предложение, контакты отдела продаж и адаптивный интерфейс для desktop, tablet и mobile.
 
 ## Запуск
 
@@ -25,12 +25,12 @@ pnpm preview
 https://V-Kozintsev.github.io/graviton-machinery/
 ```
 
-Маршруты работают через `HashRouter`, поэтому прямые переходы по внутренним страницам надежны на GitHub Pages. После создания локального git-репозитория:
+Маршруты работают через `BrowserRouter` с fallback-страницей `404.html`, поэтому внутренние URL остаются чистыми и открываются на GitHub Pages напрямую. После создания локального git-репозитория:
 
 ```bash
 git init
 git add .
-git commit -m "Initial GRAVITON catalog demo"
+git commit -m "Initial GRAVITON catalog"
 git branch -M main
 git remote add origin https://github.com/V-Kozintsev/graviton-machinery.git
 git push -u origin main
