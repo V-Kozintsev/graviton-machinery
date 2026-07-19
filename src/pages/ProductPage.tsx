@@ -8,7 +8,7 @@ import { MachineCard } from '../components/MachineCard';
 import { catalog, categories, getMachine } from '../data/catalog';
 import { useRequest } from '../state/RequestContext';
 import { formatPrice } from '../utils/format';
-import { getKeySpecs, getSalesMailHref, salesPhoneHref } from '../utils/machineCommercial';
+import { getKeySpecs, getMonthlyLease, getSalesMailHref, salesPhoneHref } from '../utils/machineCommercial';
 
 export function ProductPage() {
   const { slug = '' } = useParams();
@@ -37,6 +37,7 @@ export function ProductPage() {
   const gallery = [machine.image, machine.image, machine.image];
   const added = request.has(machine.slug);
   const keySpecs = getKeySpecs(machine, 6);
+  const lease = getMonthlyLease(machine.price);
 
   return (
     <section className="page-section">
@@ -63,7 +64,16 @@ export function ProductPage() {
               <span><ShieldCheck size={16} /> {machine.condition}</span>
               <span>{machine.availability}</span>
             </div>
-            <strong className="product-price">{formatPrice(machine.price)}</strong>
+            <div className="product-offer">
+              <div>
+                {machine.price ? <span className="old-price">{formatPrice(Math.round(machine.price * 1.06))}</span> : null}
+                <strong className="product-price">{formatPrice(machine.price)}</strong>
+              </div>
+              <div className="lease-box">
+                <span>Лизинг от</span>
+                <strong>{lease ? `${formatPrice(lease)} / мес` : 'по запросу'}</strong>
+              </div>
+            </div>
             <div className="product-spec-grid">
               {keySpecs.map(([label, value]) => (
                 <div key={label}>

@@ -7,6 +7,11 @@ export function getKeySpecs(machine: Machine, limit = 4) {
   return Object.entries(machine.specs).slice(0, limit);
 }
 
+export function getMonthlyLease(price: number | null) {
+  if (!price) return null;
+  return Math.ceil((price * 0.028) / 1000) * 1000;
+}
+
 export function getSalesMailHref(machine: Machine) {
   const subject = encodeURIComponent(`Запрос по технике ${machine.name}`);
   const body = encodeURIComponent(`Здравствуйте. Интересует ${machine.name}, ${machine.sku}. Прошу связаться с отделом продаж.`);
