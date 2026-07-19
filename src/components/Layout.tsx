@@ -18,7 +18,14 @@ function Logo() {
 
   return (
     <Link to="/" className="logo" aria-label="GRAVITON - на главную" onClick={handleClick}>
-      <span className="logo-mark">G</span>
+      <span className="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 42" focusable="false">
+          <path className="logo-shield" d="M24 4 40 13v16L24 38 8 29V13L24 4Z" />
+          <path className="logo-core" d="M24 12 32.5 16.8v8.4L24 30l-8.5-4.8v-8.4L24 12Z" />
+          <path className="logo-arm" d="M23.8 12.2 34.8 18.4v8.7l-10.7 6.1" />
+          <path className="logo-bucket" d="M15.2 24.4 22.8 28.8 18.5 31.2 11.2 27.1l4-2.7Z" />
+        </svg>
+      </span>
       <span>
         <strong>GRAVITON</strong>
         <small>строительная техника</small>
