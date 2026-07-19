@@ -11,6 +11,11 @@ export function HomePage() {
     [FileText, '03', 'КП и договор', 'Фиксируем цену, лизинг, сроки оплаты и пакет документов.'],
     [Truck, '04', 'Отгрузка', 'Проводим диагностику, фотоотчет и доставку тралом на объект.'],
   ] as const;
+  const heroStats = [
+    [ClipboardCheck, '120+', 'единиц под поставку', 'склад и партнерские площадки'],
+    [BadgeCheck, '35-50 т', 'тяжелый класс', 'автокраны, экскаваторы, бульдозеры'],
+    [Truck, '7 дней', 'быстрая отгрузка', 'для популярных позиций'],
+  ] as const;
 
   return (
     <>
@@ -25,9 +30,14 @@ export function HomePage() {
               <Link className="btn btn-secondary" to="/request">Получить предложение</Link>
             </div>
             <dl className="hero-stats">
-              <div><dt>120+</dt><dd>единиц под поставку</dd></div>
-              <div><dt>35-50 т</dt><dd>автокраны и тяжелая техника</dd></div>
-              <div><dt>7 дней</dt><dd>отгрузка популярных позиций</dd></div>
+              {heroStats.map(([Icon, value, label, note]) => (
+                <div key={value}>
+                  <Icon size={19} />
+                  <dt>{value}</dt>
+                  <dd>{label}</dd>
+                  <small>{note}</small>
+                </div>
+              ))}
             </dl>
           </div>
           <div className="hero-media">
