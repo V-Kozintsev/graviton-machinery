@@ -78,21 +78,26 @@ export function HomePage() {
         </div>
       </section>
       <section className="section muted">
-        <div className="container process-grid">
-          <div className="process-copy">
-            <span className="eyebrow">Порядок сделки</span>
-            <h2>Этапы покупки</h2>
-            <ol className="steps">
-              <li><span>01</span><strong>Подбор</strong><p>Вы выбираете машины в каталоге и отправляете заявку на расчет.</p></li>
-              <li><span>02</span><strong>Уточнение</strong><p>Менеджер фиксирует объект, комплектацию, бюджет и сроки поставки.</p></li>
-              <li><span>03</span><strong>КП и условия</strong><p>Готовим спецификацию, оплату, лизинг и маршрут отгрузки.</p></li>
-              <li><span>04</span><strong>Передача техники</strong><p>Проводим осмотр, диагностику, документы и перевозку до площадки.</p></li>
-            </ol>
+        <div className="container process-block">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">Порядок сделки</span>
+              <h2>Как проходит покупка техники</h2>
+            </div>
+            <p>От выбора модели до передачи машины на площадке: фиксируем условия, готовим документы и держим понятный график отгрузки.</p>
           </div>
-          <div className="contact-panel process-panel">
-            <h3>Быстрый запрос</h3>
-            <p>Оставьте выбранную технику в заявке, а контактные поля заполните на следующем шаге.</p>
-            <Link className="btn btn-primary" to="/request">Открыть заявку</Link>
+          <ol className="steps">
+            <li><span>01</span><strong>Подбор</strong><p>Вы выбираете позиции в каталоге или описываете задачу объекта.</p></li>
+            <li><span>02</span><strong>Расчет</strong><p>Уточняем комплектацию, состояние, бюджет и сроки поставки.</p></li>
+            <li><span>03</span><strong>КП и договор</strong><p>Передаем спецификацию, условия оплаты, лизинг и пакет документов.</p></li>
+            <li><span>04</span><strong>Отгрузка</strong><p>Проводим диагностику, осмотр и организуем доставку тралом.</p></li>
+          </ol>
+          <div className="deal-result">
+            <div>
+              <strong>Итог для покупателя</strong>
+              <p>Подтвержденная техника, прозрачная стоимость, документы для сделки и согласованный маршрут доставки.</p>
+            </div>
+            <Link className="btn btn-primary" to="/request">Открыть заявку <ArrowRight size={18} /></Link>
           </div>
         </div>
       </section>
