@@ -1,4 +1,4 @@
-import { Menu, Phone, ShoppingBag, X } from 'lucide-react';
+import { ClipboardList, Menu, Phone, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { useLockBody } from '../hooks/useLockBody';
@@ -54,8 +54,8 @@ export function Layout() {
           <div className="header-actions">
             <a className="phone" href="tel:+78005501984"><Phone size={18} /> 8 800 550-19-84</a>
             <Link className="request-link" to="/request" aria-label={`Открыть заявку, позиций: ${count}`}>
-              <ShoppingBag size={19} />
-              <span>Заявка</span>
+              <ClipboardList size={19} />
+              <span>Запрос КП</span>
               <b>{count}</b>
             </Link>
             <button ref={opener} className="icon-button mobile-only" onClick={() => setMenuOpen(true)} aria-label="Открыть меню">
@@ -86,7 +86,7 @@ export function Layout() {
         <div className="container footer-grid">
           <Logo />
           <p>Демонстрационный проект. Компания GRAVITON является вымышленной.</p>
-          <p>Москва, промзона «Северная», пав. 4 · sales@graviton-demo.ru</p>
+          <p>Москва, промзона «Северная», пав. 4 · sales@graviton-machinery.ru</p>
         </div>
       </footer>
     </>

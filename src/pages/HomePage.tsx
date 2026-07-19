@@ -18,7 +18,7 @@ export function HomePage() {
               <Link className="btn btn-secondary" to="/request">Получить предложение</Link>
             </div>
             <dl className="hero-stats">
-              <div><dt>12</dt><dd>демо-позиций</dd></div>
+              <div><dt>12</dt><dd>позиций в каталоге</dd></div>
               <div><dt>6</dt><dd>категорий</dd></div>
               <div><dt>24 ч</dt><dd>на расчет</dd></div>
             </dl>
@@ -70,7 +70,7 @@ export function HomePage() {
             <ol className="steps">
               <li>Вы выбираете машины в каталоге и отправляете заявку.</li>
               <li>Менеджер уточняет объект, комплектацию и условия поставки.</li>
-              <li>GRAVITON готовит демонстрационное коммерческое предложение.</li>
+              <li>GRAVITON готовит коммерческое предложение с комплектацией и сроками.</li>
               <li>После согласования техника передается покупателю или перевозчику.</li>
             </ol>
           </div>

@@ -8,7 +8,7 @@ const outDir = path.join(root, 'public/images/optimized');
 const sizes = [480, 768, 1200, 1600];
 
 await fs.mkdir(outDir, { recursive: true });
-const files = (await fs.readdir(sourceDir)).filter((file) => file.endsWith('.png'));
+const files = (await fs.readdir(sourceDir)).filter((file) => file.endsWith('.png') && file !== 'contact-sheet.png');
 
 for (const file of files) {
   const name = path.basename(file, '.png');

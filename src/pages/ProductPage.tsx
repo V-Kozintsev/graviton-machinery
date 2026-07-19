@@ -59,7 +59,7 @@ export function ProductPage() {
             <table className="spec-table"><tbody>{Object.entries(machine.specs).map(([key, value]) => <tr key={key}><th>{key}</th><td>{value}</td></tr>)}</tbody></table>
             <h2>Комплектация</h2>
             <ul className="check-list">{machine.equipment.map((item) => <li key={item}>{item}</li>)}</ul>
-            <div className="info-band"><p><strong>Доставка:</strong> трал по РФ, согласование погрузки и страховки.</p><p><strong>Лизинг:</strong> подготовим КП и спецификацию для сделки.</p><p><strong>Гарантия:</strong> демонстрационные условия 6 месяцев на основные узлы.</p></div>
+            <div className="info-band"><p><strong>Доставка:</strong> трал по РФ, согласование погрузки и страховки.</p><p><strong>Лизинг:</strong> подготовим КП и спецификацию для сделки.</p><p><strong>Гарантия:</strong> 6 месяцев на основные узлы после предпродажной диагностики.</p></div>
           </div>
         </div>
         <section className="section related"><div className="section-head"><h2>Похожие модели</h2></div><div className="catalog-grid">{similar.map((item) => <MachineCard key={item.slug} machine={item} />)}</div></section>

@@ -73,9 +73,9 @@ export function RequestPage({ forceErrors = false, forceSuccess = false }: { for
             <Field label="Компания" error={form.formState.errors.company?.message}><input {...form.register('company')} /></Field>
             <Field label="Электронная почта" error={form.formState.errors.email?.message}><input {...form.register('email')} /></Field>
             <Field label="Комментарий" error={form.formState.errors.comment?.message}><textarea {...form.register('comment')} rows={4} placeholder="Объект, сроки, предпочтительная комплектация" /></Field>
-            <label className="check agreement"><input type="checkbox" {...form.register('agreement')} /><span>Согласен на обработку данных в демонстрационном режиме</span></label>
+            <label className="check agreement"><input type="checkbox" {...form.register('agreement')} /><span>Согласен на обработку данных для подготовки коммерческого предложения</span></label>
             {form.formState.errors.agreement?.message && <p className="field-error">{form.formState.errors.agreement.message}</p>}
-            <Button disabled={!machines.length}>Отправить демонстрационную заявку</Button>
+            <Button disabled={!machines.length}>Отправить заявку на расчет</Button>
           </form>
         </div>
       </div>
