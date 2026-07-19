@@ -1,4 +1,4 @@
-import { ClipboardList, Menu, Phone, X } from 'lucide-react';
+import { ClipboardList, Phone, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { useLockBody } from '../hooks/useLockBody';
@@ -33,12 +33,18 @@ export function Layout() {
   const { count } = useRequest();
   useLockBody(menuOpen);
 
+  const closeMenu = (returnFocus = false) => {
+    setMenuOpen(false);
+    if (returnFocus) {
+      window.requestAnimationFrame(() => opener.current?.focus());
+    }
+  };
+
   useEffect(() => {
     if (!menuOpen) return;
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setMenuOpen(false);
-        opener.current?.focus();
+        closeMenu(true);
       }
     };
     window.addEventListener('keydown', onKey);
@@ -62,27 +68,39 @@ export function Layout() {
               <span>Запрос КП</span>
               <b>{count}</b>
             </Link>
-            <button ref={opener} className="icon-button mobile-only" onClick={() => setMenuOpen(true)} aria-label="Открыть меню">
-              <Menu size={22} />
+            <button
+              ref={opener}
+              className={`icon-button mobile-only menu-toggle ${menuOpen ? 'is-open' : ''}`}
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
+              aria-controls="mobile-menu-drawer"
+              aria-expanded={menuOpen}
+            >
+              <span />
+              <span />
+              <span />
             </button>
           </div>
         </div>
       </header>
-      {menuOpen && (
-        <div className="overlay" role="presentation" onMouseDown={() => setMenuOpen(false)}>
-          <aside className="drawer" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title" onMouseDown={(event) => event.stopPropagation()}>
-            <div className="drawer-head">
-              <h2 id="mobile-menu-title">Меню</h2>
-              <button className="icon-button" onClick={() => setMenuOpen(false)} aria-label="Закрыть меню"><X size={22} /></button>
-            </div>
-            <nav className="drawer-nav">
-              {nav.map(([href, label]) => (
-                <NavLink key={href} to={href} onClick={() => setMenuOpen(false)} end={href === '/'}>{label}</NavLink>
-              ))}
-            </nav>
-          </aside>
-        </div>
-      )}
+      <div
+        className={`overlay menu-overlay ${menuOpen ? 'is-open' : ''}`}
+        role="presentation"
+        aria-hidden={!menuOpen}
+        onMouseDown={() => closeMenu(true)}
+      >
+        <aside id="mobile-menu-drawer" className="drawer" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title" onMouseDown={(event) => event.stopPropagation()}>
+          <div className="drawer-head">
+            <h2 id="mobile-menu-title">Меню</h2>
+            <button className="icon-button" onClick={() => closeMenu(true)} aria-label="Закрыть меню"><X size={22} /></button>
+          </div>
+          <nav className="drawer-nav">
+            {nav.map(([href, label]) => (
+              <NavLink key={href} to={href} onClick={() => closeMenu()} end={href === '/'}>{label}</NavLink>
+            ))}
+          </nav>
+        </aside>
+      </div>
       <main>
         <Outlet />
       </main>
