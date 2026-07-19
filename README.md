@@ -1,12 +1,50 @@
-# GRAVITON - строительная техника
+# GRAVITON - каталог строительной техники
 
-B2B-каталог строительной техники на React, TypeScript, Vite и Tailwind CSS. Сайт включает каталог машин, детальные карточки, фильтры, заявку на коммерческое предложение, контакты отдела продаж и адаптивный интерфейс для desktop, tablet и mobile.
+Коммерческий сайт-каталог для компании, которая продает и поставляет строительную технику. Проект сделан как пример сайта для B2B-ниши: техника за несколько миллионов рублей, карточки моделей, фильтры, заявка на коммерческое предложение и контакты отдела продаж.
 
-## Запуск
+Сайт можно использовать как основу для каталога спецтехники, оборудования, транспорта, складской техники или другого дорогого товара, где покупателю важно быстро посмотреть характеристики, условия поставки и отправить заявку.
+
+## Что внутри
+
+- главная страница с презентацией компании и преимуществами;
+- каталог строительной техники с фильтрами и сортировкой;
+- карточки моделей с фото, ценой, лизингом и характеристиками;
+- детальная страница техники с галереей, параметрами и блоком продаж;
+- заявка на коммерческое предложение;
+- контакты компании;
+- адаптивная верстка для desktop, tablet и mobile;
+- чистые URL для GitHub Pages без `#/`.
+
+## Онлайн-версия
+
+```text
+https://V-Kozintsev.github.io/graviton-machinery/
+```
+
+## Технологии
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- React Hook Form
+- Zod
+- Embla Carousel
+- Lucide React
+- pnpm
+
+## Локальный запуск
 
 ```bash
 pnpm install
 pnpm dev
+```
+
+После запуска сайт будет доступен по адресу:
+
+```text
+http://127.0.0.1:5173/graviton-machinery/
 ```
 
 ## Проверка и сборка
@@ -17,23 +55,12 @@ pnpm build
 pnpm preview
 ```
 
-## GitHub Pages
+## Публикация
 
-Проект настроен для публикации в репозитории `graviton-machinery` по адресу:
+Проект настроен для GitHub Pages. Маршруты работают через `BrowserRouter` с fallback-страницей `404.html`, поэтому внутренние страницы открываются напрямую:
 
 ```text
-https://V-Kozintsev.github.io/graviton-machinery/
+/graviton-machinery/catalog
+/graviton-machinery/catalog/atlas-ex-220
+/graviton-machinery/request
 ```
-
-Маршруты работают через `BrowserRouter` с fallback-страницей `404.html`, поэтому внутренние URL остаются чистыми и открываются на GitHub Pages напрямую. После создания локального git-репозитория:
-
-```bash
-git init
-git add .
-git commit -m "Initial GRAVITON catalog"
-git branch -M main
-git remote add origin https://github.com/V-Kozintsev/graviton-machinery.git
-git push -u origin main
-```
-
-Затем включите GitHub Pages в настройках репозитория или дождитесь workflow `.github/workflows/pages.yml`.
