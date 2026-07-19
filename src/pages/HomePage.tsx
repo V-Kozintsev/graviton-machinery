@@ -1,10 +1,17 @@
-import { ArrowRight, BadgeCheck, Banknote, Truck, Wrench } from 'lucide-react';
+import { ArrowRight, BadgeCheck, Banknote, ClipboardCheck, FileText, Search, Truck, Wrench } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { categories, catalog } from '../data/catalog';
 import { MachineCard } from '../components/MachineCard';
 import { MachineImage } from '../components/Image';
 
 export function HomePage() {
+  const processSteps = [
+    [Search, '01', 'Подбор', 'Определяем тип машины, навесное оборудование и ограничения площадки.'],
+    [ClipboardCheck, '02', 'Проверка', 'Подтверждаем наличие, состояние, ПСМ и готовность к осмотру.'],
+    [FileText, '03', 'КП и договор', 'Фиксируем цену, лизинг, сроки оплаты и пакет документов.'],
+    [Truck, '04', 'Отгрузка', 'Проводим диагностику, фотоотчет и доставку тралом на объект.'],
+  ] as const;
+
   return (
     <>
       <section className="hero">
@@ -84,13 +91,17 @@ export function HomePage() {
               <span className="eyebrow">Порядок сделки</span>
               <h2>Как проходит покупка техники</h2>
             </div>
-            <p>От выбора модели до передачи машины на площадке: фиксируем условия, готовим документы и держим понятный график отгрузки.</p>
+            <p>От подбора модели до передачи машины на площадке: каждый этап фиксируется в КП, договоре и графике отгрузки.</p>
           </div>
           <ol className="steps">
-            <li><span>01</span><strong>Подбор</strong><p>Вы выбираете позиции в каталоге или описываете задачу объекта.</p></li>
-            <li><span>02</span><strong>Расчет</strong><p>Уточняем комплектацию, состояние, бюджет и сроки поставки.</p></li>
-            <li><span>03</span><strong>КП и договор</strong><p>Передаем спецификацию, условия оплаты, лизинг и пакет документов.</p></li>
-            <li><span>04</span><strong>Отгрузка</strong><p>Проводим диагностику, осмотр и организуем доставку тралом.</p></li>
+            {processSteps.map(([Icon, number, title, text]) => (
+              <li key={number}>
+                <span>{number}</span>
+                <Icon size={22} />
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </li>
+            ))}
           </ol>
           <div className="deal-result">
             <div>

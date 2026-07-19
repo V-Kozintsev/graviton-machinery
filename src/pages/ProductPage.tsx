@@ -8,7 +8,7 @@ import { MachineCard } from '../components/MachineCard';
 import { catalog, categories, getMachine } from '../data/catalog';
 import { useRequest } from '../state/RequestContext';
 import { formatPrice } from '../utils/format';
-import { getKeySpecs, getMonthlyLease, getSalesMailHref, salesPhoneHref } from '../utils/machineCommercial';
+import { getKeySpecs, getMonthlyLease, getProductGallery, getSalesMailHref, salesPhoneHref } from '../utils/machineCommercial';
 
 export function ProductPage() {
   const { slug = '' } = useParams();
@@ -34,7 +34,7 @@ export function ProductPage() {
 
   if (!machine) return <Navigate to="/404" replace />;
   const similar = catalog.filter((item) => item.category === machine.category && item.slug !== machine.slug).slice(0, 3);
-  const gallery = [machine.image, machine.image, machine.image];
+  const gallery = getProductGallery(machine);
   const added = request.has(machine.slug);
   const keySpecs = getKeySpecs(machine, 6);
   const lease = getMonthlyLease(machine.price);
@@ -94,12 +94,18 @@ export function ProductPage() {
               </div>
             </div>
             <p>{machine.description}</p>
+          </div>
+        </div>
+        <div className="product-details">
+          <section>
             <h2>Технические параметры</h2>
             <table className="spec-table"><tbody>{Object.entries(machine.specs).map(([key, value]) => <tr key={key}><th>{key}</th><td>{value}</td></tr>)}</tbody></table>
+          </section>
+          <aside className="details-aside">
             <h2>Комплектация</h2>
             <ul className="check-list">{machine.equipment.map((item) => <li key={item}>{item}</li>)}</ul>
             <div className="info-band"><p><strong>Доставка:</strong> трал по РФ, согласование погрузки и страховки.</p><p><strong>Лизинг:</strong> подготовим КП и спецификацию для сделки.</p><p><strong>Гарантия:</strong> 6 месяцев на основные узлы после предпродажной диагностики.</p></div>
-          </div>
+          </aside>
         </div>
         <section className="section related"><div className="section-head"><h2>Похожие модели</h2></div><div className="catalog-grid">{similar.map((item) => <MachineCard key={item.slug} machine={item} />)}</div></section>
       </div>
