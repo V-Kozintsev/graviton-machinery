@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { RequestProvider } from './state/RequestContext';
 import { CatalogPage } from './pages/CatalogPage';
@@ -12,10 +13,21 @@ import { ProductPage } from './pages/ProductPage';
 import { RequestPage } from './pages/RequestPage';
 import './styles.css';
 
+function ScrollToTop() {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [pathname, search]);
+
+  return null;
+}
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HashRouter>
       <RequestProvider>
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<HomePage />} />

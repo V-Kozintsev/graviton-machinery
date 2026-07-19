@@ -17,6 +17,11 @@ export function ProductPage() {
   const [emblaRef, embla] = useEmblaCarousel({ loop: true });
 
   useEffect(() => {
+    setSelected(0);
+    embla?.scrollTo(0, true);
+  }, [embla, slug]);
+
+  useEffect(() => {
     if (!embla) return;
     const onSelect = () => setSelected(embla.selectedScrollSnap());
     embla.on('select', onSelect);
