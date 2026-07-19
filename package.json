@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview --host 127.0.0.1",
-    "assets": "node scripts/extract-contact-sheet.mjs && node scripts/optimize-images.mjs",
+    "assets": "node scripts/optimize-images.mjs",
     "mockups": "node scripts/capture-mockups.mjs",
     "audit": "node scripts/audit-site.mjs"
   },

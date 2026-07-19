@@ -29,8 +29,8 @@ export function RequestPage({ forceErrors = false, forceSuccess = false }: { for
       <section className="page-section success-screen">
         <div className="container narrow">
           <CheckCircle size={54} />
-          <h1>Демонстрационная заявка оформлена</h1>
-          <p>Данные не отправлялись на сервер. Это экран успешного завершения сценария для портфолио-проекта GRAVITON.</p>
+          <h1>Заявка на расчет принята</h1>
+          <p>Мы подготовим коммерческое предложение по выбранной технике и свяжемся с вами для уточнения условий поставки.</p>
           <Link className="btn btn-primary" to="/catalog">Вернуться в каталог</Link>
         </div>
       </section>

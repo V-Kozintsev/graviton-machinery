@@ -18,13 +18,27 @@ export function HomePage() {
               <Link className="btn btn-secondary" to="/request">Получить предложение</Link>
             </div>
             <dl className="hero-stats">
-              <div><dt>12</dt><dd>позиций в каталоге</dd></div>
-              <div><dt>6</dt><dd>категорий</dd></div>
-              <div><dt>24 ч</dt><dd>на расчет</dd></div>
+              <div><dt>120+</dt><dd>единиц под поставку</dd></div>
+              <div><dt>35-50 т</dt><dd>автокраны и тяжелая техника</dd></div>
+              <div><dt>7 дней</dt><dd>отгрузка популярных позиций</dd></div>
             </dl>
           </div>
           <div className="hero-media">
             <MachineImage name="hero" alt="Современная строительная техника на реальной площадке" className="cover" priority />
+          </div>
+        </div>
+      </section>
+      <section className="scale-band" aria-label="Операционные возможности GRAVITON">
+        <div className="container scale-grid">
+          <div>
+            <span className="eyebrow">Операционная поставка</span>
+            <h2>Техника для объектов, где простой стоит дороже скидки</h2>
+          </div>
+          <p>Подбираем машины под график работ, резервируем позиции, готовим документы для лизинга и организуем перевозку тралом до площадки.</p>
+          <div className="scale-facts">
+            <span>Складской осмотр</span>
+            <span>Предпродажная диагностика</span>
+            <span>Доставка по РФ</span>
           </div>
         </div>
       </section>
@@ -64,17 +78,18 @@ export function HomePage() {
         </div>
       </section>
       <section className="section muted">
-        <div className="container split">
-          <div>
+        <div className="container process-grid">
+          <div className="process-copy">
+            <span className="eyebrow">Порядок сделки</span>
             <h2>Этапы покупки</h2>
             <ol className="steps">
-              <li>Вы выбираете машины в каталоге и отправляете заявку.</li>
-              <li>Менеджер уточняет объект, комплектацию и условия поставки.</li>
-              <li>GRAVITON готовит коммерческое предложение с комплектацией и сроками.</li>
-              <li>После согласования техника передается покупателю или перевозчику.</li>
+              <li><span>01</span><strong>Подбор</strong><p>Вы выбираете машины в каталоге и отправляете заявку на расчет.</p></li>
+              <li><span>02</span><strong>Уточнение</strong><p>Менеджер фиксирует объект, комплектацию, бюджет и сроки поставки.</p></li>
+              <li><span>03</span><strong>КП и условия</strong><p>Готовим спецификацию, оплату, лизинг и маршрут отгрузки.</p></li>
+              <li><span>04</span><strong>Передача техники</strong><p>Проводим осмотр, диагностику, документы и перевозку до площадки.</p></li>
             </ol>
           </div>
-          <div className="contact-panel">
+          <div className="contact-panel process-panel">
             <h3>Быстрый запрос</h3>
             <p>Оставьте выбранную технику в заявке, а контактные поля заполните на следующем шаге.</p>
             <Link className="btn btn-primary" to="/request">Открыть заявку</Link>

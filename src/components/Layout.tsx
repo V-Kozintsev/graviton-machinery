@@ -12,8 +12,12 @@ const nav = [
 ];
 
 function Logo() {
+  const handleClick = () => {
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  };
+
   return (
-    <Link to="/" className="logo" aria-label="GRAVITON - на главную">
+    <Link to="/" className="logo" aria-label="GRAVITON - на главную" onClick={handleClick}>
       <span className="logo-mark">G</span>
       <span>
         <strong>GRAVITON</strong>
@@ -85,7 +89,7 @@ export function Layout() {
       <footer className="footer">
         <div className="container footer-grid">
           <Logo />
-          <p>Демонстрационный проект. Компания GRAVITON является вымышленной.</p>
+          <p>Поставка, лизинг и сервис строительной техники для коммерческих объектов.</p>
           <p>Москва, промзона «Северная», пав. 4 · sales@graviton-machinery.ru</p>
         </div>
       </footer>

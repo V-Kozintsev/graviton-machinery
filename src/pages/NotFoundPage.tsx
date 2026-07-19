@@ -5,7 +5,7 @@ export function NotFoundPage() {
     <section className="page-section success-screen">
       <div className="container narrow">
         <h1>Страница не найдена</h1>
-        <p>Маршрут существует только внутри демонстрационного приложения.</p>
+        <p>Похоже, такой страницы нет в каталоге GRAVITON.</p>
         <Link className="btn btn-primary" to="/">На главную</Link>
       </div>
     </section>
