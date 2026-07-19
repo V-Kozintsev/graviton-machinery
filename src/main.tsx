@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { useEffect } from 'react';
-import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { RequestProvider } from './state/RequestContext';
 import { CatalogPage } from './pages/CatalogPage';
@@ -12,6 +12,8 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { ProductPage } from './pages/ProductPage';
 import { RequestPage } from './pages/RequestPage';
 import './styles.css';
+
+const routerBasename = import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL.replace(/\/$/, '');
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -25,7 +27,7 @@ function ScrollToTop() {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter basename={routerBasename}>
       <RequestProvider>
         <ScrollToTop />
         <Routes>
@@ -43,6 +45,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           </Route>
         </Routes>
       </RequestProvider>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>,
 );

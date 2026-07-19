@@ -1,7 +1,7 @@
 {
   "name": "GRAVITON - строительная техника",
   "short_name": "GRAVITON",
-  "start_url": "/graviton-machinery/#/",
+  "start_url": "/graviton-machinery/",
   "display": "standalone",
   "background_color": "#f4f6f8",
   "theme_color": "#20252c",
