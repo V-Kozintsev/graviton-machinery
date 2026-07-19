@@ -1,5 +1,5 @@
 import useEmblaCarousel from 'embla-carousel-react';
-import { ArrowLeft, Check, Plus } from 'lucide-react';
+import { ArrowLeft, CalendarDays, Check, ClipboardList, Mail, PhoneCall, Plus, ShieldCheck } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { Button } from '../components/Button';
@@ -8,6 +8,7 @@ import { MachineCard } from '../components/MachineCard';
 import { catalog, categories, getMachine } from '../data/catalog';
 import { useRequest } from '../state/RequestContext';
 import { formatPrice } from '../utils/format';
+import { getKeySpecs, getSalesMailHref, salesPhoneHref } from '../utils/machineCommercial';
 
 export function ProductPage() {
   const { slug = '' } = useParams();
@@ -35,6 +36,7 @@ export function ProductPage() {
   const similar = catalog.filter((item) => item.category === machine.category && item.slug !== machine.slug).slice(0, 3);
   const gallery = [machine.image, machine.image, machine.image];
   const added = request.has(machine.slug);
+  const keySpecs = getKeySpecs(machine, 6);
 
   return (
     <section className="page-section">
@@ -55,10 +57,32 @@ export function ProductPage() {
           <div className="product-info">
             <span className="eyebrow">{categories[machine.category].title} · {machine.sku}</span>
             <h1>{machine.name}</h1>
-            <div className="status-row"><span>{machine.condition}</span><span>{machine.availability}</span><span>{machine.year} год</span></div>
+            <div className="product-commercial">
+              <span><ClipboardList size={16} /> {machine.sku}</span>
+              <span><CalendarDays size={16} /> {machine.year} год</span>
+              <span><ShieldCheck size={16} /> {machine.condition}</span>
+              <span>{machine.availability}</span>
+            </div>
             <strong className="product-price">{formatPrice(machine.price)}</strong>
-            <div className="spec-row large">{machine.highlights.map((item) => <span key={item}>{item}</span>)}</div>
-            <Button onClick={() => request.add(machine.slug)} variant={added ? 'secondary' : 'primary'}>{added ? <Check size={18} /> : <Plus size={18} />} {added ? 'Добавлено в заявку' : 'Добавить в заявку'}</Button>
+            <div className="product-spec-grid">
+              {keySpecs.map(([label, value]) => (
+                <div key={label}>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              ))}
+            </div>
+            <div className="product-actions">
+              <Button onClick={() => request.add(machine.slug)} variant={added ? 'secondary' : 'primary'}>{added ? <Check size={18} /> : <Plus size={18} />} {added ? 'Добавлено в заявку' : 'Добавить в заявку'}</Button>
+              <a className="btn btn-secondary" href={getSalesMailHref(machine)}><Mail size={18} /> Написать в продажи</a>
+            </div>
+            <div className="sales-direct">
+              <PhoneCall size={18} />
+              <div>
+                <strong>Отдел продаж без добавления в заявку</strong>
+                <a href={salesPhoneHref}>8 800 550-19-84</a>
+              </div>
+            </div>
             <p>{machine.description}</p>
             <h2>Технические параметры</h2>
             <table className="spec-table"><tbody>{Object.entries(machine.specs).map(([key, value]) => <tr key={key}><th>{key}</th><td>{value}</td></tr>)}</tbody></table>
